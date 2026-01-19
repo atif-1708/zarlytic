@@ -1,30 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ZARlytics</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Inter', sans-serif; }
-        .scrollbar-hide::-webkit-scrollbar { display: none; }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.0.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.0.0/",
-    "react/": "https://esm.sh/react@^19.0.0/",
-    "lucide-react": "https://esm.sh/lucide-react@latest",
-    "recharts": "https://esm.sh/recharts@latest",
-    "@google/genai": "https://esm.sh/@google/genai@latest",
-    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@latest"
-  }
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+
+const rootElement = document.getElementById('root');
+if (!rootElement) {
+  throw new Error("Could not find root element to mount to");
 }
-</script>
-</head>
-<body class="bg-slate-50 text-slate-900">
-    <div id="root"></div>
-</body>
-</html>
+
+try {
+  const root = ReactDOM.createRoot(rootElement);
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} catch (error) {
+  console.error("ZARlytics Bootstrap Error:", error);
+}
