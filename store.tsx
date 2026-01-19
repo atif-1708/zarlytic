@@ -1,19 +1,26 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { User, Business, DailySale, MonthlyExpense } from './types';
-import { generateId } from './utils';
+import { User, Business, DailySale, MonthlyExpense } from './types.ts';
+import { generateId } from './utils.ts';
 
-// Environment variable detection for Production
-const SUPABASE_URL = (process.env as any).SUPABASE_URL || '';
-const SUPABASE_ANON_KEY = (process.env as any).SUPABASE_ANON_KEY || '';
+// Safe environment variable detection
+const getEnv = (key: string) => {
+    try {
+        return (process.env as any)[key] || (window as any).process?.env?.[key] || '';
+    } catch {
+        return '';
+    }
+};
+
+const SUPABASE_URL = getEnv('SUPABASE_URL');
+const SUPABASE_ANON_KEY = getEnv('SUPABASE_ANON_KEY');
 
 let supabase: any = null;
-if (SUPABASE_URL && SUPABASE_ANON_KEY) {
+if (SUPABASE_URL && SUPABASE_ANON_KEY && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
     try {
         supabase = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
     } catch (e) {
-        console.warn("Supabase initialization failed.");
+        console.warn("Supabase initialization failed. Check your environment variables.");
     }
 }
 
