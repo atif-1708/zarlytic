@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
-import { User, Business, DailySale, MonthlyExpense } from './types.ts';
-import { generateId } from './utils.ts';
+import { User, Business, DailySale, MonthlyExpense } from './types';
+import { generateId } from './utils';
 
 // Safe environment variable detection
 const getEnv = (key: string) => {
