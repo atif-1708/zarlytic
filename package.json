@@ -11,7 +11,7 @@
     "recharts": "latest"
   },
   "scripts": {
-    "build": "mkdir -p dist && cp index.html metadata.json vercel.json dist/ && cp *.tsx dist/ && cp *.ts dist/ && cp -r components dist/ 2>/dev/null || true && cp -r features dist/ 2>/dev/null || true",
-    "start": "npx serve ."
+    "build": "mkdir -p public && cp index.html metadata.json vercel.json public/ && cp *.tsx public/ 2>/dev/null || true && cp *.ts public/ 2>/dev/null || true && cp -r components public/ 2>/dev/null || true && cp -r features public/ 2>/dev/null || true",
+    "start": "npx serve public"
   }
 }
