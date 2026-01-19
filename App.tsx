@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import { AppProvider, useApp } from './store.tsx';
-import Login from './features/Auth.tsx';
-import Navigation from './components/Navigation.tsx';
-import Dashboard from './features/Dashboard.tsx';
-import Reports from './features/Reports.tsx';
-import Profile from './features/Profile.tsx';
+import { AppProvider, useApp } from './store';
+import Login from './features/Auth';
+import Navigation from './components/Navigation';
+import Dashboard from './features/Dashboard';
+import Reports from './features/Reports';
+import Profile from './features/Profile';
 import { 
     BusinessManagement, 
     SalesManagement, 
     ExpenseManagement, 
     UserManagement 
-} from './features/AdminManagement.tsx';
+} from './features/AdminManagement';
 import { Loader2, CloudSync } from 'lucide-react';
 
 type Tab = 'dashboard' | 'reports' | 'businesses' | 'sales' | 'expenses' | 'users' | 'profile';
