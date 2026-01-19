@@ -11,7 +11,7 @@
     "recharts": "latest"
   },
   "scripts": {
-    "build": "echo 'Deploying Static ESM Project' && mkdir -p dist && cp index.html dist/ && cp *.tsx dist/ && cp *.ts dist/ && cp vercel.json dist/ && cp -r components dist/ || true && cp -r features dist/ || true",
+    "build": "mkdir -p dist && cp index.html metadata.json vercel.json dist/ && cp *.tsx dist/ && cp *.ts dist/ && cp -r components dist/ 2>/dev/null || true && cp -r features dist/ 2>/dev/null || true",
     "start": "npx serve ."
   }
 }
