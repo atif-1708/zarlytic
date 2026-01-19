@@ -10,18 +10,40 @@
         body { font-family: 'Inter', sans-serif; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         #root:empty { display: flex; align-items: center; justify-content: center; height: 100vh; background: #f8fafc; }
-        #root:empty::after { content: 'Loading ZARlytics...'; font-weight: 600; color: #64748b; }
+        #root:empty::after { 
+            content: 'Initialising ZARlytics...'; 
+            font-weight: 600; 
+            color: #64748b;
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
     </style>
     <script>
       // Shim process.env for the browser
       window.process = { 
         env: { 
           NODE_ENV: 'production',
-          // These will be replaced by the platform's injection if available
           API_KEY: '',
           SUPABASE_URL: '',
           SUPABASE_ANON_KEY: ''
         } 
+      };
+
+      // Catch early errors
+      window.onerror = function(msg, url, lineNo, columnNo, error) {
+        console.error('Critical App Error:', msg, '\nAt:', url, ':', lineNo, ':', columnNo);
+        const root = document.getElementById('root');
+        if (root && root.innerHTML === '') {
+          root.innerHTML = '<div style="padding: 20px; text-align: center; color: #ef4444; font-family: sans-serif;">' +
+            '<h2 style="font-weight: 800;">App Failed to Start</h2>' +
+            '<p style="font-size: 14px; color: #6b7280;">' + msg + '</p>' +
+            '<button onclick="location.reload()" style="margin-top: 10px; padding: 8px 16px; background: #0f172a; color: white; border: none; border-radius: 8px; cursor: pointer;">Retry Loading</button>' +
+            '</div>';
+        }
+        return false;
       };
     </script>
 <script type="importmap">
