@@ -1,0 +1,17 @@
+{
+  "name": "zarlytics",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "@google/genai": "^0.21.0",
+    "@supabase/supabase-js": "^2.39.7",
+    "lucide-react": "^0.562.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "recharts": "^2.13.0"
+  },
+  "scripts": {
+    "build": "echo 'No build step required for ESM-only project' && mkdir -p dist && cp index.html dist/ && cp *.tsx dist/ && cp *.ts dist/ && cp vercel.json dist/",
+    "start": "npx serve ."
+  }
+}
